@@ -1,0 +1,749 @@
+/* Stile Istituzionale PA (Comune di Palermo) - Versione UX Ottimizzata */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f4f6f9;
+    color: #333333;
+    line-height: 1.5;
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* SIDEBAR STYLES */
+.sidebar {
+    width: 250px;
+    background-color: #b71c1c; /* Rosso istituzionale PA */
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    flex-shrink: 0;
+}
+
+.sidebar-brand {
+    text-align: center;
+    padding: 0 20px 20px 20px;
+    border-bottom: 1px solid rgba(255,255,255,0.2);
+    margin-bottom: 20px;
+}
+
+.sidebar-logo {
+    height: 60px;
+    margin-bottom: 15px;
+}
+
+.sidebar-brand h1 {
+    color: #ffffff;
+    font-size: 16px;
+    margin: 0;
+}
+
+.sidebar-brand h2 {
+    color: #f0f0f0;
+    font-size: 11px;
+    margin: 5px 0 0 0;
+    font-weight: normal;
+}
+
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.sidebar-heading {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 10px 25px 5px 25px;
+    font-weight: bold;
+}
+
+.sidebar-nav a {
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 25px;
+    font-size: 14px;
+    font-weight: bold;
+    border-left: 4px solid transparent;
+    transition: background-color 0.2s, border-left-color 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.sidebar-nav a:hover, .sidebar-nav a.active {
+    background-color: rgba(0,0,0,0.1);
+    border-left-color: #ffffff;
+}
+
+.sidebar-nav a[href*="login.php"] {
+    margin-top: auto; /* Sposta i link admin in fondo se c'è spazio */
+    background-color: #901616;
+}
+
+.sidebar-user {
+    padding: 15px 25px;
+    background-color: rgba(0,0,0,0.1);
+    font-size: 13px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+    margin-bottom: 10px;
+}
+
+/* MAIN CONTENT STYLES */
+.main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background-color: #f4f6f9;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.top-header {
+    background-color: #ffffff;
+    padding: 15px 30px;
+    border-bottom: 1px solid #dddddd;
+    display: flex;
+    align-items: center;
+}
+
+.top-header h3 {
+    margin: 0;
+    color: #333;
+    font-size: 18px;
+    border: none;
+    padding: 0;
+}
+h2 { 
+    font-size: 16px; 
+    font-weight: normal; 
+    color: #555555; 
+}
+h1, h2, h3, th {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    color: #b71c1c; /* Rosso istituzionale primario */
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+h3 { 
+    font-size: 18px; 
+    margin-top: 25px; 
+    border-bottom: 2px solid #b71c1c;
+    padding-bottom: 8px; 
+}
+
+.container {
+    max-width: 100%; /* Espanso per occupare tutto il main-content */
+    margin: 20px 30px;
+    padding: 25px;
+    background: #ffffff;
+    border: 1px solid #dddddd;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); /* Leggera ombra moderna */
+}
+
+/* Container più stretto per i form di login/registrazione */
+.container.form-container {
+    max-width: 500px;
+    margin: 40px auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-top: 15px;
+    font-weight: bold;
+    font-size: 14px;
+    color: #333333;
+}
+
+/* Campi moderni, flat ma squadrati */
+input[type="text"], input[type="password"], input[type="email"], input[type="date"], textarea, select {
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #cccccc;
+    border-radius: 0;
+    background-color: #ffffff;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    transition: border-color 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #b71c1c;
+    background-color: #fdfafb;
+}
+
+input[type="submit"], button {
+    margin-top: 25px;
+    padding: 12px 25px;
+    background-color: #b71c1c;
+    color: #ffffff;
+    border: none;
+    border-radius: 0;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+}
+
+input[type="submit"]:hover, button:hover {
+    background-color: #901616;
+}
+
+input[type="submit"]:disabled, button:disabled {
+    background-color: #cccccc !important;
+    color: #666666 !important;
+    cursor: not-allowed;
+}
+
+.form-inline {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 10px;
+}
+
+.form-inline input[type="text"] {
+    flex: 1;
+    margin-top: 0;
+}
+
+.form-inline input[type="submit"], .form-inline button {
+    margin-top: 0;
+}
+
+hr {
+    margin: 30px 0;
+    border: 0;
+    border-top: 1px solid #eeeeee;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+table, th, td {
+    border: 1px solid #dddddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f8f9fa;
+    color: #b71c1c;
+    border-bottom: 2px solid #b71c1c;
+}
+
+tr:nth-child(even) {
+    background-color: #fafbfc;
+}
+
+.msg {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-left: 5px solid #4caf50;
+    background-color: #e8f5e9;
+    color: #2e7d32;
+    font-size: 14px;
+}
+
+.msg.error {
+    background-color: #ffebee;
+    color: #c62828;
+    border-left-color: #c62828;
+}
+
+.msg.info {
+    background-color: #e3f2fd;
+    color: #1565c0;
+    border-left-color: #1565c0;
+}
+
+code {
+    background-color: #f5f5f5;
+    padding: 2px 6px;
+    font-family: "Courier New", Courier, monospace;
+    font-weight: bold;
+    color: #b71c1c;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+    gap: 10px;
+}
+
+.pagination a, .pagination span {
+    padding: 8px 15px;
+    text-decoration: none;
+    background-color: #f4f6f9;
+    color: #333;
+    border: 1px solid #ddd;
+    font-weight: bold;
+    font-size: 13px;
+    transition: background-color 0.2s;
+}
+
+.pagination a:hover {
+    background-color: #b71c1c;
+    color: #fff;
+    border-color: #b71c1c;
+}
+
+.pagination .current {
+    background-color: #b71c1c;
+    color: #fff;
+    border-color: #b71c1c;
+}
+
+.pagination button {
+    padding: 8px 15px;
+    text-decoration: none;
+    background-color: #f4f6f9;
+    color: #333;
+    border: 1px solid #ddd;
+    font-weight: bold;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.pagination button:hover {
+    background-color: #b71c1c;
+    color: #fff;
+}
+
+.pagination button.current {
+    background-color: #b71c1c;
+    color: #fff;
+    border-color: #b71c1c;
+}
+
+/* Spinner */
+.spinner-container {
+    display: none;
+    text-align: center;
+    padding: 20px;
+}
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #b71c1c;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-overlay {
+    position: relative;
+}
+
+.loading-overlay::after {
+    content: "";
+    display: none;
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(255,255,255,0.7);
+    z-index: 10;
+}
+
+.loading-overlay.active::after {
+    display: block;
+}
+
+/* AJAX Upvote Styling */
+.btn-upvote {
+    padding: 6px 10px;
+    font-size: 11px;
+    margin-top: 5px;
+    background-color: #f4f6f9;
+    color: #b71c1c;
+    border: 1px solid #b71c1c;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.2s;
+}
+
+.btn-upvote.voted {
+    background-color: #4caf50;
+    color: #fff;
+    border-color: #4caf50;
+}
+
+.creator-label {
+    font-size: 10px;
+    color: #666;
+    background: #eee;
+    padding: 3px 6px;
+    display: inline-block;
+    margin-top: 5px;
+}
+
+.login-to-vote {
+    font-size: 10px;
+    color: #777;
+    text-decoration: none;
+    display: block;
+    margin-top: 5px;
+}
+
+.pratica-id {
+    font-size: 9px;
+    color: #999;
+    word-break: break-all;
+}
+
+.badge {
+    padding: 4px 6px;
+    font-size: 11px;
+    font-weight: bold;
+    color: #fff;
+    border-radius: 3px;
+}
+.bg-attesa { background-color: #d32f2f; }
+.bg-carico { background-color: #f57f17; }
+.bg-risolto { background-color: #2e7d32; }
+
+.upvote-cell {
+    width: 60px;
+    text-align: center;
+    vertical-align: top;
+    background-color: #f8f9fa;
+    border-right: 1px solid #dddddd;
+}
+.upvote-count {
+    font-size: 20px;
+    font-weight: bold;
+    color: #b71c1c;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Password Strength Meter */
+.pwd-leds {
+    display: flex;
+    gap: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+.led {
+    height: 5px;
+    flex: 1;
+    background-color: #eee;
+    border-radius: 0; /* Squadrato istituzionale PA */
+}
+
+.rossa { background-color: #d32f2f; }
+.gialla { background-color: #fbc02d; }
+.verde-chiaro { background-color: #689f38; }
+.verde-scuro { background-color: #388e3c; }
+
+.pwd-status-text {
+    font-size: 12px;
+    font-weight: bold;
+    margin-bottom: 15px;
+    display: block;
+    color: #333;
+}
+
+/* Custom jQuery UI Autocomplete Styling */
+.ui-autocomplete {
+    background-color: #ffffff !important;
+    border: 1px solid #b71c1c !important;
+    border-radius: 0 !important;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    max-height: 250px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    z-index: 1000 !important;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+}
+
+.ui-menu-item {
+    border-bottom: 1px solid #eee;
+}
+
+.ui-menu-item-wrapper {
+    padding: 8px 12px !important;
+    color: #333 !important;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active {
+    background-color: #b71c1c !important;
+    border: none !important;
+    color: #ffffff !important;
+    margin: 0 !important;
+}
+
+/* --- NEW UX COMPONENTS --- */
+
+/* Custom Combobox */
+.custom-combobox {
+    position: relative;
+    width: 100%;
+}
+
+.combobox-toggle {
+    width: 100%;
+    text-align: left;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.combobox-toggle:hover {
+    background-color: #f9f9f9;
+}
+
+.combobox-toggle i {
+    color: #b71c1c;
+}
+
+.combobox-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: #fff;
+    border: 1px solid #b71c1c;
+    z-index: 1000;
+    display: none;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.combobox-search-container {
+    padding: 10px;
+    background: #f8f8f8;
+    border-bottom: 1px solid #eee;
+}
+
+.combobox-search-container input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.combobox-results {
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.combobox-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.2s;
+}
+
+.combobox-item:hover {
+    background-color: #fce4e4;
+    color: #b71c1c;
+}
+
+.combobox-item:last-child {
+    border-bottom: none;
+}
+
+.combobox-no-results {
+    padding: 15px;
+    text-align: center;
+    color: #999;
+    font-style: italic;
+}
+
+/* Character Counter */
+.textarea-container {
+    position: relative;
+    margin-top: 5px;
+}
+
+.char-counter {
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 11px;
+    color: #999;
+    pointer-events: none;
+}
+
+.char-counter.limit-reached {
+    color: #d32f2f;
+    font-weight: bold;
+}
+
+/* Dashboard Filter Specific Styles */
+.header-with-combobox {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 15px;
+    padding: 5px 0;
+}
+
+.dashboard-filter {
+    max-width: 180px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.dashboard-filter .combobox-toggle {
+    padding: 6px 12px;
+    font-size: 13px;
+    margin-top: 0;
+    min-width: 150px;
+}
+
+.dashboard-filter .combobox-dropdown {
+    width: 250px;
+    right: 0;
+    left: auto;
+    transform: none;
+}
+
+.btn-clear {
+    background: none;
+    border: none;
+    color: #dc3545;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-clear:hover {
+    color: #b71c1c;
+}
+
+/* --- PREMIUM FOOTER STYLES --- */
+.main-footer {
+    background-color: #b71c1c; /* Big Red */
+    color: #ffffff;
+    padding: 60px 40px 30px 40px;
+    margin-top: auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-section {
+    flex: 1;
+    min-width: 250px;
+}
+
+.footer-section h4 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 25px;
+    border-bottom: 2px solid rgba(255,255,255,0.3);
+    padding-bottom: 10px;
+    font-family: "Segoe UI", Tahoma, sans-serif;
+}
+
+.footer-section p, .footer-section ul {
+    font-size: 14px;
+    line-height: 1.6;
+    color: rgba(255,255,255,0.8);
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 12px;
+}
+
+.footer-section ul li a {
+    color: rgba(255,255,255,0.8);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.footer-section ul li a:hover {
+    color: #ffffff;
+    text-decoration: underline;
+}
+
+.footer-bottom {
+    margin-top: 50px;
+    padding-top: 25px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    text-align: center;
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+}
+
+.footer-logo {
+    height: 50px;
+    margin-bottom: 20px;
+    filter: brightness(0) invert(1);
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.social-links a {
+    color: #ffffff;
+    font-size: 20px;
+    background: rgba(255,255,255,0.1);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.social-links a:hover {
+    background: rgba(255,255,255,0.2);
+}
