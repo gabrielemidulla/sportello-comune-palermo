@@ -1,7 +1,7 @@
     <footer class="main-footer">
         <div class="footer-content">
             <div class="footer-section">
-                <img src="img/logo-palermo-white.png" alt="Comune di Palermo" class="footer-logo" onerror="this.src='https://www.comune.palermo.it/js/comune/images/logo-comune-palermo.png'; this.style.filter='brightness(0) invert(1)';">
+                <img src="img/logo.png" alt="Comune di Palermo" class="footer-logo">
                 <h4>Città di Palermo</h4>
                 <p>Portale istituzionale per la gestione delle segnalazioni e il dialogo diretto tra cittadini e amministrazione comunale.</p>
                 <div class="social-links">

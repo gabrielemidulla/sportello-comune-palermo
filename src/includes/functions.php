@@ -62,11 +62,10 @@ function renderSegnalazioneRow($row, $corrente_cittadino) {
             <strong style="font-size: 15px; color: #333;"><i class="fa-solid fa-tag"></i> <?php echo htmlspecialchars($row['categoria']); ?></strong><br>
             <small><?php echo htmlspecialchars($row['descrizione']); ?></small>
         </td>
-        <td><?php echo htmlspecialchars($row['indirizzo_visualizzato'] ?? $row['indirizzo']); ?></td>
+        <td><?php echo htmlspecialchars($row['indirizzo']); ?></td>
         <td><?php echo date('d/m/Y H:i', strtotime($row['data_inserimento'])); ?></td>
         <td style="vertical-align: middle; text-align: center;">
             <div class="badge <?php echo $badge_class; ?>"><?php echo htmlspecialchars($row['stato']); ?></div><br>
-            <span class="pratica-id" title="<?php echo htmlspecialchars($row['codice_pratica']); ?>">ID: <?php echo substr($row['codice_pratica'], 0, 8); ?>...</span>
         </td>
     </tr>
     <?php

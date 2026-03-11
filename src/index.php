@@ -39,13 +39,14 @@ $totale_pagine = ceil($totale_segnalazioni / $limite_per_pagina);
 $corrente_cittadino = isset($_SESSION['cittadino_id']) ? (int)$_SESSION['cittadino_id'] : 0;
 $query_segnalazioni = "
     SELECT 
-        s.id, s.codice_pratica, s.indirizzo, s.categoria, s.descrizione, s.data_inserimento, s.stato,
+        s.id, s.codice_pratica, st.indirizzo_completo AS indirizzo, s.categoria, s.descrizione, s.data_inserimento, s.stato,
         s.cittadino_id AS creatore_id,
         c.nome, c.cognome,
         (SELECT COUNT(*) FROM upvotes_segnalazioni u WHERE u.segnalazione_id = s.id) AS upvotes,
         (SELECT COUNT(*) FROM upvotes_segnalazioni u2 WHERE u2.segnalazione_id = s.id AND u2.cittadino_id = ?) AS user_has_upvoted
     FROM segnalazioni s
     LEFT JOIN cittadini c ON s.cittadino_id = c.id
+    LEFT JOIN strade st ON s.strada_id = st.id
     ORDER BY upvotes DESC, s.data_inserimento DESC
     LIMIT ? OFFSET ?
 ";

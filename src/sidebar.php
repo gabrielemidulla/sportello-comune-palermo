@@ -3,7 +3,7 @@ $current_page = basename($_SERVER['SCRIPT_NAME']);
 ?>
 <aside class="sidebar">
     <div class="sidebar-brand">
-        <img src="https://www.comune.palermo.it/wp-content/uploads/2024/09/cropped-favicon.webp" alt="Logo PA" class="sidebar-logo">
+        <img src="/img/logo.png" alt="Logo PA" class="sidebar-logo">
         <h1>Sportello del Cittadino</h1>
         <h2>Comune di Palermo</h2>
     </div>

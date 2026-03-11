@@ -19,7 +19,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['inserisci'])) {
     $categoria = $_POST['categoria'];
     $descrizione = trim($_POST['descrizione']);
     
-    // L'hash ora si basa sull'ID del cittadino per garantire la privacy della pratica
     $stringa_da_hashare = $cittadino_id . $descrizione . time();
     $codice_pratica = hash('sha256', $stringa_da_hashare);
 
@@ -141,7 +140,7 @@ require_once 'includes/_partials/head.php';
             searchTimeout = setTimeout(function() {
                 $results.html('<div class="combobox-no-results"><i class="fa-solid fa-spinner fa-spin"></i> Ricerca in corso...</div>');
                 
-                $.get('ajax_handler.php', { action: 'search_strade', term: term }, function(data) {
+                $.getJSON('ajax_handler.php', { action: 'search_strade', term: term }, function(data) {
                     $results.empty();
                     if (data.length === 0) {
                         $results.append('<div class="combobox-no-results">Nessun indirizzo trovato</div>');

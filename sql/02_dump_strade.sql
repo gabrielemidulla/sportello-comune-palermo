@@ -1,5 +1,7 @@
 USE comune_palermo;
+SET FOREIGN_KEY_CHECKS = 0;
 TRUNCATE TABLE strade;
+SET FOREIGN_KEY_CHECKS = 1;
 
 INSERT INTO strade (tipo_strada, toponimo, cap, quartiere, circoscrizione, indirizzo_completo) VALUES
 ('CORTILE', 'A.', '90135', 'Cuba - Calatafimi', '4', 'CORTILE A.'),

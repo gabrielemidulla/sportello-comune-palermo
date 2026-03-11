@@ -61,7 +61,7 @@ if ($action === 'load_bacheca') {
         'data' => 's.data_inserimento',
         'upvotes' => 'upvotes',
         'categoria' => 's.categoria',
-        'indirizzo' => 'indirizzo_visualizzato'
+        'indirizzo' => 'indirizzo'
     ];
     $order_by = $sort_map[$sort] ?? 's.data_inserimento';
     $order_direction = ($order === 'ASC') ? 'ASC' : 'DESC';
@@ -84,7 +84,7 @@ if ($action === 'load_bacheca') {
         SELECT 
             s.id, s.codice_pratica, s.categoria, s.descrizione, s.data_inserimento, s.stato,
             s.cittadino_id AS creatore_id,
-            COALESCE(st.indirizzo_completo, s.indirizzo) AS indirizzo_visualizzato,
+            st.indirizzo_completo AS indirizzo,
             (SELECT COUNT(*) FROM upvotes_segnalazioni u WHERE u.segnalazione_id = s.id) AS upvotes,
             (SELECT COUNT(*) FROM upvotes_segnalazioni u2 WHERE u2.segnalazione_id = s.id AND u2.cittadino_id = ?) AS user_has_upvoted
         FROM segnalazioni s
