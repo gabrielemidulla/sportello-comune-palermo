@@ -43,7 +43,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['registra'])) {
                     [$nome, $cognome, $codice_fiscale, $data_nascita, $email, $password_hash, $token_verifica], "sssssss");
                 
                 // Invio email con link di verifica HTTP (Mailpit girerà in locale alla porta 8025)
-                $verify_link = "http://localhost:8080/verifica.php?token=" . $token_verifica;
+                $host = $_SERVER['HTTP_HOST'];
+                $verify_link = "http://" . $host . "/verifica.php?token=" . $token_verifica;
                 
                 $subject = "Comune di Palermo - Verifica la tua email";
                 $html_message = "
@@ -57,7 +58,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['registra'])) {
                 $mail_sent = inviaEmailSetup($email, $subject, $html_message);
 
                 if ($mail_sent) {
-                    $msg = "Registrazione completata con successo!<br><br>Ti abbiamo inviato <strong>un'email di conferma all'indirizzo indicato.</strong> Controlla la posta (e il server Mailpit su <code>http://localhost:8025</code>) per attivare l'account prima di accedere.";
+                    $host_ip = explode(':', $_SERVER['HTTP_HOST'])[0];
+                    $msg = "Registrazione completata con successo!<br><br>Ti abbiamo inviato <strong>un'email di conferma all'indirizzo indicato.</strong> Controlla la posta (e il server Mailpit su <code>http://" . $host_ip . ":8025</code>) per attivare l'account prima di accedere.";
                 } else {
                     $msg = "Profilo creato, ma <strong>si è verificato un errore nell'invio dell'email</strong>. Verifica che Mailpit sia in esecuzione.";
                 }
