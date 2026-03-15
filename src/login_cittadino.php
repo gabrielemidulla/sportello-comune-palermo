@@ -18,7 +18,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
 
-    // Recupera i dati del cittadino dal DB usando i Prepared Statement
     $stmt = $mysqli->prepare("SELECT id, nome, cognome, password_hash, verificato FROM cittadini WHERE email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
@@ -27,13 +26,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->close();
 
     if ($user) {
-        // Verifica la password e lo stato di attivazione dell'account
         if (password_verify($password, $user['password_hash'])) {
             if ($user['verificato'] == 1) {
-                // Autenticazione ok: Rigenera SessID
                 session_regenerate_id(true);
                 
-                // Salva le credenziali in sessione, separandole da quelle dei dipendenti
                 $_SESSION['cittadino_id'] = $user['id'];
                 $_SESSION['nome_cittadino'] = $user['nome'];
                 $_SESSION['cognome_cittadino'] = $user['cognome'];

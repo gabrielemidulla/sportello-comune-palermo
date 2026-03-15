@@ -15,18 +15,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['aggiorna_stato'])) {
     $id_segnalazione = (int)$_POST['id_segnalazione'];
     $nuovo_stato = $_POST['stato'];
     
-    // Whitelist per prevenire invio di stati malevoli ("In attesa", "Presa in carico", "Risolto")
     $stati_ammessi = ['In attesa', 'Presa in carico', 'Risolto'];
     
     if (in_array($nuovo_stato, $stati_ammessi)) {
         try {
-            // Prepared Statement (MySQLi) per UPDATE sicuro
             $stmt = $mysqli->prepare("UPDATE segnalazioni SET stato = ? WHERE id = ?");
             $stmt->bind_param("si", $nuovo_stato, $id_segnalazione);
             $stmt->execute();
             $stmt->close();
             
-            // Salvataggio messaggio in sessione per prevenire che un reinvio del form re-invii l'update
             $_SESSION['msg'] = "Stato della pratica aggiornato correttamente.";
             header("Location: dashboard.php");
             exit;
@@ -38,7 +35,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['aggiorna_stato'])) {
     }
 }
 
-// Lettura e validazione messaggio di successo proveniente da redirect PRG
 if (isset($_SESSION['msg'])) {
     $msg = "<div class='msg'>" . htmlspecialchars($_SESSION['msg']) . "</div>";
     unset($_SESSION['msg']); // ripulisce il messaggio per non mostrarlo ad infinitum
@@ -113,58 +109,5 @@ require_once 'includes/_partials/head.php';
         </div>
     </div>
 
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script>
-        let currentPage = 1;
-
-        function loadOperatorBacheca(page = 1) {
-            currentPage = page;
-            const statusFilter = $('#status-filter').val();
-            
-            $('.table-container').addClass('active');
-            $('#loader').show();
-
-            $.post('ajax_handler.php', {
-                action: 'load_operator_bacheca',
-                page: page,
-                stato: statusFilter
-            }, function(response) {
-                $('.table-container').removeClass('active');
-                $('#loader').hide();
-                
-                if (response.success) {
-                    $('#operator-body').html(response.html);
-                    $('#pagination-container').html(response.pagination);
-                } else {
-                    alert(response.message || 'Errore durante il caricamento');
-                }
-            }, 'json');
-        }
-
-        function updateStatus(id, newStatus) {
-            $('#loader').show();
-            $.post('ajax_handler.php', {
-                action: 'update_status',
-                id: id,
-                stato: newStatus
-            }, function(response) {
-                $('#loader').hide();
-                if (response.success) {
-                    // Ricarica la pagina corrente per mostrare i badge aggiornati
-                    loadOperatorBacheca(currentPage);
-                } else {
-                    alert(response.message || 'Errore durante l\'aggiornamento');
-                }
-            }, 'json');
-        }
-
-        function changePage(page) {
-            loadOperatorBacheca(page);
-        }
-
-        // Caricamento iniziale
-        $(document).ready(function() {
-            loadOperatorBacheca(1);
-        });
-    </script>
+    <script src="js/dashboard.js"></script>
 <?php require_once 'includes/_partials/footer.php'; ?>

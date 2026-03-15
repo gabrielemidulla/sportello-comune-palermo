@@ -56,7 +56,6 @@ if ($action === 'load_bacheca') {
     $offset = ($pagina - 1) * $limite_per_pagina;
     $filter_strada = !empty($_POST['strada_id']) ? (int)$_POST['strada_id'] : null;
 
-    // Mapping dei campi per il sorting sicuro
     $sort_map = [
         'data' => 's.data_inserimento',
         'upvotes' => 'upvotes',
@@ -79,7 +78,6 @@ if ($action === 'load_bacheca') {
     $totale_segnalazioni = $totale_row['tot'];
     $totale_pagine = ceil($totale_segnalazioni / $limite_per_pagina);
 
-    // Query con JOIN per recuperare l'indirizzo dalla tabella strade o da backup
     $query = "
         SELECT 
             s.id, s.codice_pratica, s.categoria, s.descrizione, s.data_inserimento, s.stato,

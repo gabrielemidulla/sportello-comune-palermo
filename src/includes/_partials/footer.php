@@ -45,7 +45,7 @@
         
         <div class="footer-bottom">
             &copy; <?php echo date('Y'); ?> Comune di Palermo - Sportello del Cittadino. Tutti i diritti riservati. <br>
-            Sviluppato per fini didattici - Corso di Sviluppo Web e Sicurezza Informatica.
+            Sviluppato per fini didattici
         </div>
     </footer>
     </main>
